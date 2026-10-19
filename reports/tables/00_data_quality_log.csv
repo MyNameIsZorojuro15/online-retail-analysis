@@ -1,0 +1,10 @@
+rule,rows,pct_rows,value_gbp
+kept_as_sale,1002009,93.88,19254950.22
+overlap_between_sheets,22523,2.11,377488.45
+cancellation,16583,1.55,-365216.45
+exact_duplicate,11812,1.11,54228.42
+non_product_line,5814,0.54,75712.13
+stock_write_off,3391,0.32,0.0
+reversed_within_24h,2662,0.25,37701.88
+zero_or_negative_price,2571,0.24,0.0
+accounting_adjustment,6,0.0,-147614.08
