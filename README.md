@@ -32,10 +32,10 @@ December 2011 stops on the 9th. Figures are product revenue in GBP after cleanin
   Germany grew 12 %, France 41 %, Spain 32 %. Orders fell 4 % while the average order rose 6 %.
 - **Ireland, the second-largest market abroad, fell 26 %.** Worth a look before spending on new markets.
 - **Revenue is concentrated.** The top 20 % of products bring 78 % of revenue, the top 20 % of
-  customers 74 %. In a recency-frequency-value segmentation, 23 % of customers ("champions") bring
-  67 % of revenue.
-- **735 formerly frequent customers have gone quiet** (median 137 days since last order); they spent
-  £822k last year. They are the cheapest revenue to win back.
+  customers 74 %. In a recency-frequency-value segmentation, 28 % of customers ("champions") bring
+  70 % of revenue.
+- **736 formerly frequent customers have gone quiet** (median 142 days since last order); they spent
+  £812k last year. They are the cheapest revenue to win back.
 - **About one in five new customers buys again in a given later month** (21 % one month after the
   first order, 18 % twelve months after; weighted over 22 and 11 cohorts).
 - **38 % of the year's revenue lands in September to November**, 15 % in November alone.
@@ -72,7 +72,7 @@ cover the identified 86.6 % only.
 
 ## Recommendations
 
-1. **Win back the at-risk group** with a targeted reorder offer: 735 customers, £822k last year.
+1. **Win back the at-risk group** with a targeted reorder offer: 736 customers, £812k last year.
 2. **Plan stock and staffing for September to November**, when 38 % of revenue is earned.
 3. **Grow order count, not only basket size**: orders per customer fell 4.4 %; a reorder reminder for
    frequent buyers targets that directly.
@@ -96,7 +96,8 @@ Choices worth defending:
 - **The December 2009 cohort is left out of retention**: everyone already active when the data starts
   looks "new" in that month.
 - **RFM on quintiles** with a simple, readable segment rule set, because the point is an action list
-  for a sales team, not a model.
+  for a sales team, not a model. Scores use `CEIL(5 * CUME_DIST())` rather than `NTILE`: most customers
+  share a low order count, and `NTILE` splits such ties arbitrarily, so segment counts changed between runs.
 
 ## Run it
 

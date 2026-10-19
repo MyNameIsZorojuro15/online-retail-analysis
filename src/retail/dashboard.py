@@ -121,7 +121,8 @@ def figures() -> list[tuple[str, str, go.Figure]]:
     f = go.Figure([go.Bar(x=names, y=s.customers_pct, name="% of customers", marker_color=GREY),
                    go.Bar(x=names, y=s.revenue_pct, name="% of revenue", marker_color=BLUE)])
     f.update_layout(title="Customer segments (recency, frequency, value), Dec 2010 – Nov 2011", barmode="group", legend=dict(orientation="h", y=-0.2), **layout)
-    figs.append(("segments", "A quarter of customers bring two thirds of revenue; the at-risk group is the cheapest revenue to win back.", f))
+    champ = s[s.segment.str.contains("Champions")].iloc[0]
+    figs.append(("segments", f"{champ.customers_pct:.0f} % of customers bring {champ.revenue_pct:.0f} % of revenue; the at-risk group is the cheapest revenue to win back.", f))
 
     x = t("09_cancellations")
     f = go.Figure(go.Scatter(x=pd.to_datetime(x.month), y=x.cancelled_pct, mode="lines+markers", line=dict(color=RED)))
