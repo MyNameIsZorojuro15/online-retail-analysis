@@ -1,14 +1,15 @@
 -- RFM segmentation of identified customers active in Y2, measured on 2011-12-01.
--- Scores 1-5 by quintile; segments follow a common rule set (recency first, then frequency).
+-- Scores 1-5 by quintile with CEIL(5 * CUME_DIST()), so customers with equal values always get the same score
+-- (NTILE splits ties arbitrarily, and most customers share a low order count). Segments: recency first, then frequency.
 WITH y2 AS (SELECT * FROM sales WHERE customer_id IS NOT NULL AND month BETWEEN DATE '2010-12-01' AND DATE '2011-11-01'),
 base AS (SELECT customer_id,
                 datediff('day', max(invoice_date), TIMESTAMP '2011-12-01') AS recency_days,
                 count(DISTINCT invoice)                                   AS frequency,
                 sum(revenue)                                              AS monetary
          FROM y2 GROUP BY customer_id),
-scored AS (SELECT *, 6 - ntile(5) OVER (ORDER BY recency_days) AS r,
-                     ntile(5) OVER (ORDER BY frequency)          AS f,
-                     ntile(5) OVER (ORDER BY monetary)           AS m
+scored AS (SELECT *, ceil(5 * cume_dist() OVER (ORDER BY recency_days DESC)) AS r,
+                     ceil(5 * cume_dist() OVER (ORDER BY frequency))          AS f,
+                     ceil(5 * cume_dist() OVER (ORDER BY monetary))           AS m
            FROM base),
 seg AS (SELECT *, CASE
             WHEN r >= 4 AND f >= 4 THEN '1 Champions'

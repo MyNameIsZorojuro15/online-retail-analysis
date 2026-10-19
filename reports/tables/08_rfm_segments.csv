@@ -1,7 +1,7 @@
 segment,customers,customers_pct,revenue_gbp,revenue_pct,median_recency_days,median_orders
-1 Champions,1006,23.4,5422998.44,67.3,11.0,7.0
-2 Loyal,832,19.4,1134959.41,14.1,41.0,3.0
-"3 Recent, low frequency",430,10.0,189493.43,2.3,18.0,1.0
-4 At risk (were frequent),736,17.1,833450.49,10.3,137.0,3.0
-5 Need attention,308,7.2,128487.85,1.6,51.0,1.0
-6 Lapsed,980,22.8,354308.59,4.4,231.0,1.0
+1 Champions,1184,27.6,5629349.19,69.8,13.0,6.0
+2 Loyal,820,19.1,1056048.97,13.1,42.0,2.0
+"3 Recent, low frequency",288,6.7,96966.52,1.2,17.0,1.0
+4 At risk (were frequent),736,17.1,811729.33,10.1,142.0,3.0
+5 Need attention,310,7.2,126298.86,1.6,52.0,1.0
+6 Lapsed,954,22.2,343305.34,4.3,230.0,1.0
